@@ -8,7 +8,7 @@ module OdooClient
 
 		def initialize(url, database, username, password)
 			@url = url
-			@common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/common")
+			@common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/object")
 			@db = database
 			@password = password
 
