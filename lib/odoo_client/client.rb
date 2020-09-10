@@ -8,11 +8,13 @@ module OdooClient
 
 		def initialize(url, database, username, password)
 			@url = url
-			@common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/object")
+			@common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/common")
 			@db = database
 			@password = password
 
 			@uid = @common.call('authenticate', @db, username, @password, {})
+			
+			puts @uid
 
 			raise AuthenticationError.new unless @uid == 1
 		end
