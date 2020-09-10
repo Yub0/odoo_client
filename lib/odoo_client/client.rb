@@ -11,10 +11,9 @@ module OdooClient
 			@common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/common")
 			@db = database
 			@password = password
-
-			@uid = @common.call('authenticate', @db, username, @password, {})
 			
-			puts @uid
+			@common.call('version')
+			@uid = @common.call('authenticate', @db, username, @password, {})
 
 			raise AuthenticationError.new unless @uid == 1
 		end
