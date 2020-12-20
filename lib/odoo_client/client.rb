@@ -15,7 +15,7 @@ module OdooClient
 			@common.call('version')
 			@uid = @common.call('authenticate', @db, username, @password, {})
 
-			raise AuthenticationError.new unless @uid == 1
+			raise AuthenticationError.new if @uid == false
 		end
 
 		def version
