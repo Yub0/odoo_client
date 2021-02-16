@@ -22,6 +22,10 @@ module OdooClient
 			@common.call('version')["server_version"]
 		end
 
+		def me
+			@uid
+		end
+
 		def count_records(model_name, filters=[])
 			models.execute_kw(@db, @uid, @password, model_name, 'search_count', [filters], {})
 		end	
